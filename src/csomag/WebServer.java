@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 /**
  * Created by bathoryalex on 3/11/2016.
  */
-public class Login extends HttpServlet
+public class WebServer extends HttpServlet
 {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -38,8 +38,9 @@ public class Login extends HttpServlet
         }
         else
         {
-            req.getRequestDispatcher("index.html").include(req, resp);
             out.println("You already logged in!");
+            req.getRequestDispatcher("logout.html").include(req, resp);
+            session.invalidate();
         }
     }
 }
