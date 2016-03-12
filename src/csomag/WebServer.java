@@ -23,7 +23,7 @@ public class WebServer extends HttpServlet
         HttpSession session = req.getSession();
 
 //        if ((name.equals("alex") && pass.equals("12345")) || (name.equals("coco") && pass.equals("kaka")))
-        if (!name.equals(session.getAttribute("username")))
+        if (!name.equals(session.getAttribute("username")) && !pass.equals(session.getAttribute("password")))
         {
             if (name.equals("Alex") && pass.equals("12345"))
             {
@@ -40,7 +40,6 @@ public class WebServer extends HttpServlet
         {
             out.println("You already logged in!");
             req.getRequestDispatcher("logout.html").include(req, resp);
-            session.invalidate();
         }
     }
 }
